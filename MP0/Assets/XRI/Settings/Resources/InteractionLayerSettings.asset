@@ -21,6 +21,12 @@ MonoBehaviour:
   - 
   - 
   - 
+  - CrownKey
+  - ShieldKey
+  - SkullKey
+  - AxeKey
+  - MaskKey
+  - GreeceKey
   - 
   - 
   - 
