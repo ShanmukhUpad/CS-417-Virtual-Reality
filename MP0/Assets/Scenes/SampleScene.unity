@@ -355,7 +355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &57980753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1962,13 +1962,13 @@ MonoBehaviour:
     -Go into the open room (perpendicular to this wall)
 
     -Solve
-    the puzzle to get the key
+    the puzzle to get a key (Platforming Required)
 
-    -Attach the key to the barrier to access the next
-    room
+    -Attach the key to the barrier
+    to access the next room
 
-    -Repeat until you have broken all three barriers to get teleported
-    to the final room'
+    -Solve the puzzle in the second room to win the
+    game'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1995,8 +1995,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2762,7 +2762,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -159.96808, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5818,7 +5818,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1060054346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7763,15 +7763,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4f3008806412d7c4d87d2781cbefd5f7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.326353
+      value: -1.121
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f3008806412d7c4d87d2781cbefd5f7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.5
+      value: -5.43
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f3008806412d7c4d87d2781cbefd5f7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.6087134
+      value: 2.617
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4f3008806412d7c4d87d2781cbefd5f7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -7805,7 +7805,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlagueMask_LODG
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4742473837712756890, guid: 4f3008806412d7c4d87d2781cbefd5f7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
