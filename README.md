@@ -1,3 +1,3 @@
 # CS-417-Virtual-Reality
-Where all of my VR Projects are stored
+Where all of my VR Projects are stored<br>
 **Names:** Aimee Zhang & Shanmukh Upadhyayula
