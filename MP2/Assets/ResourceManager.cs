@@ -3,15 +3,20 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
     public float researchPoints = 0f;
-    public float researchRate = 5f;   // Increase for testing
+    public float researchRate = 5f;
+
+    public bool generating = false;   // NEW
 
     public GameObject energyUI;
     public bool energyUnlocked = false;
 
     void Update()
     {
-        // Euler Integration
-        researchPoints += 20f * Time.deltaTime;
+        // Only generate if activated
+        if (generating)
+        {
+            researchPoints += researchRate * Time.deltaTime;
+        }
 
         // Unlock second resource
         if (!energyUnlocked && researchPoints >= 100f)
@@ -21,6 +26,11 @@ public class ResourceManager : MonoBehaviour
             if (energyUI != null)
                 energyUI.SetActive(true);
         }
+    }
+
+    public void StartGenerating()
+    {
+        generating = true;
     }
 
     public void AddRate(float amount)

@@ -6,16 +6,21 @@ public class PressurePlate : MonoBehaviour
     public GameObject prefabToSpawn;
     public Transform spawnPoint;
 
+    public ResourceManager resourceManager;  // NEW
+
     private void OnTriggerEnter(Collider other)
     {
-        // 1. Check if the object touching the plate is the Player
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player triggered the plate. Spawning object and self-destructing.");
+            Debug.Log("Player triggered the plate.");
+
+            // Start resource generation
+            if (resourceManager != null)
+            {
+                resourceManager.StartGenerating();
+            }
 
             SpawnObject();
-
-            // 2. Destroy the pressure plate itself so it can't be used again
             Destroy(gameObject);
         }
     }
