@@ -1060,6 +1060,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 863325971}
   resourceManager: {fileID: 1974493603}
   requiredResearch: 10
+  upgradeAmount: 2
+  textDisplay: {fileID: 0}
 --- !u!1001 &101045107
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16630,7 +16632,9 @@ MonoBehaviour:
   prefabToSpawn: {fileID: 4530848891416502443, guid: b97f6b4fd6e5cb745a7c5dc0e9b92c8c, type: 3}
   spawnPoint: {fileID: 1159106120}
   resourceManager: {fileID: 1974493603}
-  requiredResearch: 1000
+  requiredResearch: 100
+  upgradeAmount: 2
+  textDisplay: {fileID: 0}
 --- !u!1001 &1277919910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27123,7 +27127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FlaskLiquid
   manager: {fileID: 1974493603}
-  maxResourceForFull: 500
+  maxResourceForFull: 280
 --- !u!1001 &2079203362
 PrefabInstance:
   m_ObjectHideFlags: 0
