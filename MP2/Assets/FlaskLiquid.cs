@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class FlaskLiquid : MonoBehaviour
 {
+    public enum LiquidType { Red, Blue, Green }
+    public LiquidType liquidType;
+
     public ResourceManager manager;
-    public float maxResourceForFull = 50f;  // Lower for testing
+    public float maxForFull = 50f;
 
     private float fullHeight;
 
     void Start()
     {
-        // Make sure object is set to FULL height in editor before play
         fullHeight = transform.localScale.y;
-
-        // Start empty
         SetLiquidHeight(0f);
     }
 
@@ -20,7 +20,22 @@ public class FlaskLiquid : MonoBehaviour
     {
         if (manager == null) return;
 
-        float percent = Mathf.Clamp01(manager.researchPoints / maxResourceForFull);
+        float currentAmount = 0f;
+
+        switch (liquidType)
+        {
+            case LiquidType.Red:
+                currentAmount = manager.redLiquid;
+                break;
+            case LiquidType.Blue:
+                currentAmount = manager.blueLiquid;
+                break;
+            case LiquidType.Green:
+                currentAmount = manager.greenLiquid;
+                break;
+        }
+
+        float percent = Mathf.Clamp01(currentAmount / maxForFull);
         SetLiquidHeight(percent);
     }
 
@@ -28,14 +43,12 @@ public class FlaskLiquid : MonoBehaviour
     {
         float newHeight = fullHeight * percent;
 
-        // Set scale
         transform.localScale = new Vector3(
             transform.localScale.x,
             newHeight,
             transform.localScale.z
         );
 
-        // Move upward so bottom stays fixed
         transform.localPosition = new Vector3(
             transform.localPosition.x,
             newHeight / 2f,

@@ -5,11 +5,10 @@ public class PressurePlate2 : MonoBehaviour
 {
     public GameObject prefabToSpawn;
     public Transform spawnPoint;
-
     public ResourceManager resourceManager;
 
-    public float requiredResearch = 100f;
-    public float upgradeAmount = 2f;     // How much rate increases each time
+    public float requiredRed = 100f;
+    public float upgradeAmount = 2f;
 
     public TextMeshPro textDisplay;
 
@@ -20,35 +19,34 @@ public class PressurePlate2 : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         if (resourceManager == null) return;
 
-        // Require research to use
-        if (resourceManager.researchPoints < requiredResearch)
+        // Not enough red liquid
+        if (resourceManager.redLiquid < requiredRed)
         {
             if (textDisplay != null)
-                textDisplay.text = "Need 100 Research";
+                textDisplay.text = "Need 100 Red Liquid";
             return;
         }
 
-        // Spend research cost (optional but recommended)
-        resourceManager.SpendResearch(requiredResearch);
+        // Spend red liquid
+        resourceManager.SpendRed(requiredRed);
 
-        // FIRST TIME → Spawn Generator
+        // FIRST TIME → Build generator
         if (!hasSpawned)
         {
             SpawnObject();
-            resourceManager.StartGenerating();
-
+            resourceManager.StartRedGeneration();
             hasSpawned = true;
 
             if (textDisplay != null)
-                textDisplay.text = "Generator Built!";
+                textDisplay.text = "Red Generator Built!";
         }
         else
         {
-            // AFTER FIRST TIME → Upgrade rate
-            resourceManager.AddRate(upgradeAmount);
+            // Upgrade
+            resourceManager.AddRedRate(upgradeAmount);
 
             if (textDisplay != null)
-                textDisplay.text = "Upgraded! +" + upgradeAmount + " Rate";
+                textDisplay.text = "Upgraded! +" + upgradeAmount + " Red Rate";
         }
     }
 

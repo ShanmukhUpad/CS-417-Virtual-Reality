@@ -4,10 +4,17 @@ using TMPro;
 public class UIUpdater : MonoBehaviour
 {
     public ResourceManager manager;
-    public TextMeshProUGUI text;
+
+    public TextMeshProUGUI redText;
+    public TextMeshProUGUI blueText;
+    public TextMeshProUGUI greenText;
 
     void Update()
     {
-        text.text = "Research: " + manager.researchPoints.ToString("F1");
+        if (manager == null) return;
+
+        redText.text = "Red Liquid: " + manager.redLiquid.ToString("F0");
+        blueText.text = "Blue Liquid: " + manager.blueLiquid.ToString("F0");
+        greenText.text = "Green Liquid: " + manager.greenLiquid.ToString("F0");
     }
 }

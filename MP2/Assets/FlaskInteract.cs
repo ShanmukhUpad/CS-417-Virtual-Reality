@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class ResearchButton : MonoBehaviour
+public class FlaskInteract : MonoBehaviour
 {
     public ResourceManager resourceManager;
 
@@ -10,14 +10,14 @@ public class ResearchButton : MonoBehaviour
     void Awake()
     {
         interactable = GetComponent<UnityEngine.XR.Interaction.Toolkit.Interactables.XRBaseInteractable>();
-        interactable.selectEntered.AddListener(OnPressed);
+        interactable.selectEntered.AddListener(OnFlaskTouched);
     }
 
-    void OnPressed(SelectEnterEventArgs args)
+    void OnFlaskTouched(SelectEnterEventArgs args)
     {
         if (resourceManager != null)
         {
-            resourceManager.researchPoints += 1f;
+            resourceManager.redLiquid += 1f;
         }
     }
 }

@@ -1,28 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
     [Header("Spawn Settings")]
     public GameObject prefabToSpawn;
     public Transform spawnPoint;
-
-    public ResourceManager resourceManager;  // NEW
+    public ResourceManager resourceManager;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!other.CompareTag("Player")) return;
+
+        Debug.Log("Player triggered the plate.");
+
+        if (resourceManager != null)
         {
-            Debug.Log("Player triggered the plate.");
-
-            // Start resource generation
-            if (resourceManager != null)
-            {
-                resourceManager.StartGenerating();
-            }
-
-            SpawnObject();
-            Destroy(gameObject);
+            resourceManager.StartRedGeneration();  // ✅ FIXED
         }
+
+        SpawnObject();
+        Destroy(gameObject);
     }
 
     void SpawnObject()

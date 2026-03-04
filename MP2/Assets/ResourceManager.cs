@@ -2,49 +2,142 @@ using UnityEngine;
 
 public class ResourceManager : MonoBehaviour
 {
-    public float researchPoints = 0f;
-    public float researchRate = 5f;
+    // =============================
+    // LIQUID AMOUNTS
+    // =============================
 
-    public bool generating = false;   // NEW
+    public float redLiquid = 0f;
+    public float blueLiquid = 0f;
+    public float greenLiquid = 0f;
 
-    public GameObject energyUI;
-    public bool energyUnlocked = false;
+
+    // =============================
+    // GENERATION RATES
+    // =============================
+
+    public float redRate = 1f;
+    public float blueRate = 0f;
+    public float greenRate = 0f;
+
+
+    // =============================
+    // GENERATION STATES
+    // =============================
+
+    public bool generatingRed = false;
+    public bool generatingBlue = false;
+    public bool generatingGreen = false;
+
 
     void Update()
     {
-        // Only generate if activated
-        if (generating)
+        if (generatingRed)
         {
-            researchPoints += researchRate * Time.deltaTime;
+            redLiquid += redRate * Time.deltaTime;
         }
 
-        // Unlock second resource
-        if (!energyUnlocked && researchPoints >= 100f)
+        if (generatingBlue)
         {
-            energyUnlocked = true;
+            blueLiquid += blueRate * Time.deltaTime;
+        }
 
-            if (energyUI != null)
-                energyUI.SetActive(true);
+        if (generatingGreen)
+        {
+            greenLiquid += greenRate * Time.deltaTime;
         }
     }
 
-    public void StartGenerating()
+
+    // =============================
+    // START GENERATION
+    // =============================
+
+    public void StartRedGeneration()
     {
-        generating = true;
+        generatingRed = true;
     }
 
-    public void AddRate(float amount)
+    public void StartBlueGeneration()
     {
-        researchRate += amount;
+        generatingBlue = true;
     }
 
-    public bool SpendResearch(float amount)
+    public void StartGreenGeneration()
     {
-        if (researchPoints >= amount)
+        generatingGreen = true;
+    }
+
+
+    // =============================
+    // UPGRADE RATES
+    // =============================
+
+    public void AddRedRate(float amount)
+    {
+        redRate += amount;
+    }
+
+    public void AddBlueRate(float amount)
+    {
+        blueRate += amount;
+    }
+
+    public void AddGreenRate(float amount)
+    {
+        greenRate += amount;
+    }
+
+
+    // =============================
+    // SPENDING METHODS
+    // =============================
+
+    public bool SpendRed(float amount)
+    {
+        if (redLiquid >= amount)
         {
-            researchPoints -= amount;
+            redLiquid -= amount;
             return true;
         }
         return false;
+    }
+
+    public bool SpendBlue(float amount)
+    {
+        if (blueLiquid >= amount)
+        {
+            blueLiquid -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    public bool SpendGreen(float amount)
+    {
+        if (greenLiquid >= amount)
+        {
+            greenLiquid -= amount;
+            return true;
+        }
+        return false;
+    }
+
+
+    // =============================
+    // MULTI-LIQUID CHECK
+    // =============================
+
+    public bool CanAfford(float redCost, float blueCost, float greenCost)
+    {
+        return redLiquid >= redCost &&
+               blueLiquid >= blueCost &&
+               greenLiquid >= greenCost;
+    }
+
+    public void SpendMultiple(float redCost, float blueCost, float greenCost)
+    {
+        redLiquid -= redCost;
+        blueLiquid -= blueCost;
+        greenLiquid -= greenCost;
     }
 }
