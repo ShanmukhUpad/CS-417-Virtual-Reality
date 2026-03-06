@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem; 
 public class ResourceManager : MonoBehaviour
 {
     // =============================
@@ -15,9 +15,15 @@ public class ResourceManager : MonoBehaviour
     // GENERATION RATES
     // =============================
 
+<<<<<<< HEAD
     public float redRate = 10f;
     public float blueRate = 10f;
     public float greenRate = 10f;
+=======
+    public float redRate =5f;
+    public float blueRate = 5f;
+    public float greenRate = 5f;
+>>>>>>> c411284ee19ece241affd5f39f2d0dd55e229dde
 
 
     // =============================
@@ -31,9 +37,14 @@ public class ResourceManager : MonoBehaviour
 
     void Update()
     {
+        if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame){
+            redLiquid += 10f;
+         Debug.Log("Add red liuqid" + redLiquid);
+        }
         if (generatingRed)
         {
             redLiquid += redRate * Time.deltaTime;
+            
         }
 
         if (generatingBlue)
@@ -55,16 +66,19 @@ public class ResourceManager : MonoBehaviour
     public void StartRedGeneration()
     {
         generatingRed = true;
+        Debug.Log("Red generation started");
     }
 
     public void StartBlueGeneration()
-    {
-        generatingBlue = true;
-    }
+{
+    generatingBlue = true;
+    if (blueRate == 0) blueRate = 5f; 
+}
 
     public void StartGreenGeneration()
     {
         generatingGreen = true;
+        if (greenRate == 0) greenRate = 5f; 
     }
 
 

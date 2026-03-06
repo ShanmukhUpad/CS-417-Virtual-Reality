@@ -11,7 +11,8 @@ public class RedPlate : MonoBehaviour
     private bool activated = false;
 
     private void OnTriggerEnter(Collider other)
-    {
+    {   
+    if (!other.CompareTag("Player")) return;
         if (!other.CompareTag("Player")) return;
         if (activated) return;
         if (resourceManager == null) return;
