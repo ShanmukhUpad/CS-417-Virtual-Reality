@@ -15,9 +15,9 @@ public class ResourceManager : MonoBehaviour
     // GENERATION RATES
     // =============================
 
-    public float redRate = 1f;
-    public float blueRate = 0f;
-    public float greenRate = 0f;
+    public float redRate = 10f;
+    public float blueRate = 10f;
+    public float greenRate = 10f;
 
 
     // =============================
