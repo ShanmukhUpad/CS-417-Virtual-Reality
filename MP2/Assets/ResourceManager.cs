@@ -26,7 +26,6 @@ public class ResourceManager : MonoBehaviour
 
     void Update()
     {
-        // Debug key: press P to add 10 red liquid in editor
         if (Keyboard.current != null && Keyboard.current.pKey.wasPressedThisFrame)
         {
             redLiquid += 10f;
@@ -41,6 +40,11 @@ public class ResourceManager : MonoBehaviour
 
         if (generatingGreen)
             greenLiquid += greenRate * Time.deltaTime;
+
+        // Cap all resources at 150
+        redLiquid = Mathf.Min(redLiquid, 150f);
+        blueLiquid = Mathf.Min(blueLiquid, 150f);
+        greenLiquid = Mathf.Min(greenLiquid, 150f);
     }
 
     // =============================

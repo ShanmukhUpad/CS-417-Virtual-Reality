@@ -17,9 +17,9 @@ public class RedPlate : MonoBehaviour
         if (activated) return;
         if (resourceManager == null) return;
 
-        if (resourceManager.CanAfford(10f, 0f, 0f))
+        if (resourceManager.CanAfford(5f, 0f, 0f))
         {
-            resourceManager.SpendMultiple(10f, 0f, 0f);
+            resourceManager.SpendMultiple(5f, 0f, 0f);
             resourceManager.StartRedGeneration();
 
             SpawnObject();

@@ -16,9 +16,9 @@ public class GreenPlate : MonoBehaviour
         if (activated) return;
         if (resourceManager == null) return;
 
-        if (resourceManager.CanAfford(140f, 140f, 0f))
+        if (resourceManager.CanAfford(75f, 75f, 0f))
         {
-            resourceManager.SpendMultiple(140f, 140f, 0f);
+            resourceManager.SpendMultiple(75f, 75f, 0f);
             resourceManager.StartGreenGeneration();
 
             SpawnObject();
